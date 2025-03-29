@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh '''
                     echo build start;
-                    ./gradlew clean build -DskipTests=true
+                    ./gradlew clean build -Dspring.profiles.active=prod -DskipTests=true
                 ''';
             }
         }
