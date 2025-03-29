@@ -14,59 +14,6 @@ spring:
       on-profile: default
   application:
     name: apigateway
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
-#    listener:
-#      simple:
-#        prefetch: 5
-#  cloud:
-#    gateway:
-#      default-filters:
-#        - name: GlobalFilter
-#          args:
-#            baseMessage: Spring Cloud Gateway Global Filter
-#            preLogger: true
-#            postLogger: true
-#      routes:
-#        - id: user-service
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/login
-#            - Method=POST
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#        - id: user-service
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/users
-#            - Method=POST
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#        - id: user-service
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/actuator/**
-#            - Method=GET,POST
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#        - id: user-service
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/**
-#            - Method=GET
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
-
-#token:
-#  secret: user_token
 
 management:
   endpoints:
