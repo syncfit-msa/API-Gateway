@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git clone') {
             steps {
-                git branch: 'develop', url: 'https://github.com/syncfit-msa/API-Gateway';
+                git branch: 'test', url: 'https://github.com/syncfit-msa/API-Gateway';
             }
         }
 
