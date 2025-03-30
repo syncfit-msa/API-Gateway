@@ -3,6 +3,12 @@ spring:
     import: optional:configserver:http://127.0.0.1:8888/
   cloud:
     config:
-      name: apigateway-service
+      name: api-gateway
   application:
-    name: apigateway-service
+    name: api-gateway
+  profiles:
+    active: local
+    include:
+      - jwt
+      - eureka
+      - actuator
