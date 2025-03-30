@@ -11,7 +11,7 @@ pipeline {
         stage('Project Build') {
             steps {
                 sh '''
-                    echo build start;
+                    echo build start~~;
                     ./gradlew clean build -Dspring.profiles.active=prod -DskipTests=true
                 ''';
             }
