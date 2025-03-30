@@ -20,6 +20,7 @@ public class ApigatewayApplication {
 
     @jakarta.annotation.PostConstruct
     public void init() {
+        log.info("Task 환경 변수 - S3에 정의된 env 파일 주입");
         log.info("---------------EUREKA URL ------------ {}", url);
     }
 
