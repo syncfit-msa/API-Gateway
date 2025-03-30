@@ -11,6 +11,14 @@ eureka:
 spring:
   application:
     name: apigateway
+  rabbitmq:
+    host: ${SRV_OUTER_RABBITMQ}
+    port: ${SRV_OUTER_RABBITMQ_PORT}
+    username: ${SRV_OUTER_RABBITMQ_USERNAME}
+    password: ${SRV_OUTER_RABBITMQ_PASSWORD}
+    listener:
+      simple:
+        prefetch: 5
 
 management:
   endpoints:
