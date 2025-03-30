@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: apigateway-service
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
