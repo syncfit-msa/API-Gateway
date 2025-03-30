@@ -14,8 +14,8 @@ spring:
   config:
     import: optional:configserver:http://${SRV_CONFIG_HOST:127.0.0.1}:${SRV_CONFIG_PORT:8888}/
   rabbitmq:
-    host: ${SRV_OUTER_RABBITMQ}
-    port: ${SRV_OUTER_RABBITMQ_PORT}
+    host: ${SRV_OUTER_RABBITMQ:localhost}
+    port: ${SRV_OUTER_RABBITMQ_PORT:5672}
     username: ${SRV_OUTER_RABBITMQ_USERNAME}
     password: ${SRV_OUTER_RABBITMQ_PASSWORD}
     listener:
