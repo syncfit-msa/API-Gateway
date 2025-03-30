@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Git clone') {
             steps {
-                git branch: 'test', url: 'https://github.com/syncfit-msa/API-Gateway';
+                git branch: 'develop', url: 'https://github.com/syncfit-msa/API-Gateway';
             }
         }
 
         stage('Project Build') {
             steps {
                 sh '''
-                    echo build start~~;
+                    echo build start;
                     ./gradlew clean build -Dspring.profiles.active=prod -DskipTests=true
                 ''';
             }
