@@ -12,3 +12,10 @@ spring:
       - jwt
       - eureka
       - actuator
+      - routes
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.server: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: DEBUG
