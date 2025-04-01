@@ -11,7 +11,7 @@ pipeline {
         stage('Project Build') {
             steps {
                 sh '''
-                    echo build start;
+                    echo build start ~;
                     ./gradlew clean build -Dspring.profiles.active=prod -x test
                 ''';
             }
@@ -46,17 +46,18 @@ pipeline {
             }
         }
 
-        stage('Deploy to ECS') {
+        stage('Deploy to EC2') {
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-access-key'
-                ]]) {
-                       sh '''
-                            RUNNING_COUNT=$(aws ecs describe-services --cluster LG-CNS-Mini2-10 --services srv-Api-Gateway --query "services[0].runningCount" --output text)
-                            aws ecs update-service --cluster LG-CNS-Mini2-10 --service srv-Api-Gateway --desired-count $RUNNING_COUNT --force-new-deployment
-                            aws ecs wait services-stable --cluster LG-CNS-Mini2-10 --services srv-Api-Gateway
-                       '''
+                sshagent(['ec2-ssh-key']) {
+                    sh '''
+                        ssh ec2-user@172.31.37.239 '
+                            aws ecr get-login-password --region ap-northeast-3 | docker login --username AWS --password-stdin 268104899906.dkr.ecr.ap-northeast-3.amazonaws.com
+                            docker pull 268104899906.dkr.ecr.ap-northeast-3.amazonaws.com/mini2/api-gateway:latest
+
+                            docker-compose down
+                            docker-compose up -d
+                        '
+                    '''
                 }
             }
         }
