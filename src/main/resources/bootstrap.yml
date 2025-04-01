@@ -3,7 +3,7 @@ spring:
     name: api-gateway
   cloud:
     config:
-      uri: http://127.0.0.1:8888
+      uri: http://${CONFIG_HOST:127.0.0.1}:${CONFIG_PORT:8888}/
 
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
