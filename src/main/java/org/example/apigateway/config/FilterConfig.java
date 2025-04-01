@@ -1,7 +1,6 @@
 package org.example.apigateway.config;
 
 import lombok.RequiredArgsConstructor;
-import org.example.apigateway.filter.AuthHeaderFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +24,15 @@ public class FilterConfig {
 
                 .route("track-service", r -> r.path("/tracks/**")
                         .uri("lb://track-service"))
+
+                .route("recommendation-service", r -> r.path("/music/recommendation/**")
+                        .uri("lb://recommendation-service"))
+
+                .route("wishlist-service", r -> r.path("/wishlist/**")
+                        .uri("lb://wishlist-service"))
+
+                .route("youtube-service", r -> r.path("/music/youtube/**")
+                        .uri("lb://youtube-service"))
 
                 .build();
     }
