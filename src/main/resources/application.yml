@@ -12,7 +12,7 @@ spring:
       - jwt
       - eureka
       - actuator
-      - routes
+      - routes-prod
 
 logging:
   level:

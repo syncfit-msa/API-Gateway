@@ -10,18 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @Slf4j
 public class ApigatewayApplication {
-
-    @Value("${eureka.client.service-url.defaultZone}")
-    private String url;
-
     public static void main(String[] args) {
         SpringApplication.run(ApigatewayApplication.class, args);
     }
-
-    @jakarta.annotation.PostConstruct
-    public void init() {
-        log.info("Task 환경 변수 - S3에 정의된 env 파일 주입");
-        log.info("---------------EUREKA URL ------------ {}", url);
-    }
-
 }
